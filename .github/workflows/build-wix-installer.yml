@@ -31,6 +31,6 @@ jobs:
           # Navigate to the directory where your wix.wxs file is located
           cd ..
 
-          # Build the MSI using candle.exe and light.exe
-          & "C:\Program Files\WiX\bin\candle.exe" wix.wxs
-          & "C:\Program Files\WiX\bin\light.exe" -ext WixUIExtension -out MyProduct.msi wix.wixobj
+          # Build the MSI using the full path to candle.exe and light.exe
+          & "C:\Program Files\WiX\bin\candle.exe" ".\wix.wxs"
+          & "C:\Program Files\WiX\bin\light.exe" -ext WixUIExtension -out MyProduct.msi ".\wix.wixobj"
