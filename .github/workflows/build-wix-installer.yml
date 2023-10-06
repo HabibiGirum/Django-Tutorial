@@ -1,4 +1,4 @@
-name: WiX Build
+name: Build MSI
 
 on:
   push:
@@ -21,10 +21,12 @@ jobs:
           # Extract WiX Toolset
           Expand-Archive -Path 'wix311-binaries.zip' -DestinationPath $env:ProgramFiles\WiX
 
+      - name: Set up WiX environment
+        run: |
           # Add WiX Toolset to PATH
-          $env:Path += ";$($env:ProgramFiles)\WiX\bin"
+          $env:Path += ";$($env:ProgramFiles)\WiX"
 
       - name: Build MSI
         run: |
-          & "$($env:ProgramFiles)\WiX\bin\candle.exe" wix.wxs
-          & "$($env:ProgramFiles)\WiX\bin\light.exe" -ext WixUIExtension -out MyProduct.msi wis.wixobj
+          & candle.exe wix.wxs
+          & light.exe -ext WixUIExtension -out MyProduct.msi wix.wixobj
