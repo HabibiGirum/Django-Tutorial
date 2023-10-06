@@ -28,21 +28,21 @@ jobs:
       - name: Debug ProgramFiles
         run: echo $env:ProgramFiles
 
-      - name: Debug
-        run: |
-          # Debugging output
-          Write-Host "Current directory: $(Get-Location)"
-          Write-Host "Listing files in the directory:"
-          Get-ChildItem
+      # - name: Debug
+      #   run: |
+      #     # Debugging output
+      #     Write-Host "Current directory: $(Get-Location)"
+      #     Write-Host "Listing files in the directory:"
+      #     Get-ChildItem
       
-          # Navigate to the directory where your wix.wxs file is located
-          Set-Location -Path ..
+      #     # Navigate to the directory where your wix.wxs file is located
+      #     Set-Location -Path ..
       
-          # Debug the path before running
-          Write-Host "Path to candle.exe: ${env:ProgramFiles}\WiX\bin\candle.exe"
+      #     # Debug the path before running
+      #     Write-Host "Path to candle.exe: ${env:ProgramFiles}\WiX\bin\candle.exe"
       
-          # Build the MSI using the full path to candle.exe
-          & "${env:ProgramFiles}\WiX\bin\candle.exe" "wix.wxs"
+      #     # Build the MSI using the full path to candle.exe
+      #     & "${env:ProgramFiles}\WiX\bin\candle.exe" "wix.wxs"
 
 
 
@@ -52,5 +52,5 @@ jobs:
           Set-Location -Path ..
       
           # Build the MSI using the full path to candle.exe
-          & "${env:ProgramFiles}\WiX\bin\candle.exe" "wix.wxs"
+          cmd /c "${env:ProgramFiles}\WiX\bin\candle.exe" "wix.wxs"
 
