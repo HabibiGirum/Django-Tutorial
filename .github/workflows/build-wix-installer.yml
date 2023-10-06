@@ -32,5 +32,5 @@ jobs:
           cd "F:\github action\wix.wxs"
 
           # Build the MSI using candle.exe and light.exe
-          "C:\Program Files\WiX\bin\candle.exe" wix.wxs
-          "C:\Program Files\WiX\bin\light.exe" -ext WixUIExtension -out MyProduct.msi wix.wixobj
+          & "C:\Program Files\WiX\bin\candle.exe" wix.wxs
+          & "C:\Program Files\WiX\bin\light.exe" -ext WixUIExtension -out MyProduct.msi wix.wixobj
