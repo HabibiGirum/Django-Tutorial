@@ -25,4 +25,6 @@ jobs:
           $env:Path += ";$($env:ProgramFiles)\WiX\bin"
 
       - name: Build MSI
-        run: candle wix.wxs && light -ext WixUIExtension -out MyProduct.msi wix.wixobj
+        run: |
+          & "$($env:ProgramFiles)\WiX\bin\candle.exe" wix.wxs
+          & "$($env:ProgramFiles)\WiX\bin\light.exe" -ext WixUIExtension -out MyProduct.msi wis.wixobj
