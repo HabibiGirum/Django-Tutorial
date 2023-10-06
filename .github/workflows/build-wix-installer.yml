@@ -1,0 +1,29 @@
+name: Build WiX Installer
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  build:
+    runs-on: windows-latest  
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up WiX Toolset
+      uses: wixtoolset/setup-wix@v2
+
+    - name: Build WiX Installer
+      run: candle -nologo -out build wix.wxs
+
+    - name: Create Installer
+      run: light -nologo -out wix.msi build.wixobj
+
+    - name: Publish Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: installer
+        path: wix.msi
