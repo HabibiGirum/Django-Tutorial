@@ -28,5 +28,8 @@ jobs:
 
       - name: Build MSI 
         shell: cmd
-        run: candle.exe wix.wxs
+        run:
+          cd . .
+          candle.exe wix.wxs
+          light.exe wix.wixobj
 
