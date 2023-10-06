@@ -52,4 +52,4 @@ jobs:
           Set-Location -Path ..
       
           # Build the MSI using the full path to candle.exe
-          cmd /c "\"${env:ProgramFiles}\WiX\bin\candle.exe\"" "wix.wxs"
+          cmd /c call "${env:ProgramFiles}\WiX\bin\candle.exe" "wix.wxs"
