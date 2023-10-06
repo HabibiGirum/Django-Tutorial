@@ -29,8 +29,8 @@ jobs:
       - name: Build MSI
         run: |
           # Navigate to the directory where your wix.wxs file is located
-          #cd path/to/your/wix/wxs/file/directory
+          cd "F:\github action\wix.wxs"
 
           # Build the MSI using candle.exe and light.exe
-          & candle.exe wix.wxs
-          & light.exe -ext WixUIExtension -out MyProduct.msi wix.wixobj
+          "C:\Program Files\WiX\bin\candle.exe" wix.wxs
+          "C:\Program Files\WiX\bin\light.exe" -ext WixUIExtension -out MyProduct.msi wix.wixobj
