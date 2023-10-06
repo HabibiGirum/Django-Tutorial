@@ -28,9 +28,8 @@ jobs:
 
       - name: Build MSI
         run: |
-          # Navigate to the directory where your wix.wxs file is located
-          cd ..
-
-          # Build the MSI using the full path to candle.exe and light.exe
-          & "C:\Program Files\WiX\bin\candle.exe" ".\wix.wxs"
-          & "C:\Program Files\WiX\bin\light.exe" -ext WixUIExtension -out MyProduct.msi ".\wix.wixobj"
+         # Navigate to the directory where your wix.wxs file is located
+         Set-Location -Path ..
+         # Build the MSI using PowerShell and Start-Proces
+         Start-Process -Wait -FilePath "candle" -ArgumentList "wix.wxs"
+         Start-Process -Wait -FilePath "light" -ArgumentList "wix.wixobj"
