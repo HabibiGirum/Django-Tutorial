@@ -13,8 +13,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up WiX toolset
-        uses: jchorl/wix-toolset-action@v1.2.0
+      - name: Set up WiX Toolset
+        uses: RoboCafaz/setup-wix-toolset@v1
 
       - name: Build MSI
-        run: candle wix.wxs && light -ext WixUIExtension -out wix.msi wix.wixobj
+        run: candle wix.wxs && light -ext WixUIExtension -out MyProduct.msi wix.wixobj
