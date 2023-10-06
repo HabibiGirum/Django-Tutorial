@@ -27,7 +27,7 @@ jobs:
           $env:Path += ";$($env:ProgramFiles)\WiX\bin"
 
       - name: Build MSI 
-        shell: cmd
+        shell: pwsh
         run:
           cd . .
           candle.exe wix.wxs
