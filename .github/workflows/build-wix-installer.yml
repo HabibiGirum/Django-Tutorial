@@ -25,6 +25,9 @@ jobs:
         run: |
           # Add WiX Toolset to PATH
           $env:Path += ";$($env:ProgramFiles)\WiX\bin"
+      - name: Debug ProgramFiles
+        run: echo $env:ProgramFiles
+
 
       - name: Build MSI
         run: |
