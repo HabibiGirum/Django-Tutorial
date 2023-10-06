@@ -1,4 +1,4 @@
-name: Build WiX Installer
+name: WiX Build
 
 on:
   push:
@@ -7,20 +7,14 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted  
+    runs-on: windows-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build WiX Installer
-        run: |
-    
-          candle -nologo -out build wix.wxs
-          light -nologo -out wix.msi build.wixobj
+      - name: Set up WiX toolset
+        uses: jchorl/wix-toolset-action@v1.2.0
 
-      - name: Publish Artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: installer
-          path: wix.msi
+      - name: Build MSI
+        run: candle wix.wxs && light -ext WixUIExtension -out wix.msi wix.wixobj
