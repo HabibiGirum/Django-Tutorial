@@ -7,21 +7,17 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
-
-    container:
-      image: microsoft/wix:latest
+    runs-on: self-hosted  # Specify the label of your self-hosted runner here
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      # Your build steps using the WiX Toolset within the container
       - name: Build WiX Installer
-        run: candle -nologo -out build wix.wxs
-
-      - name: Create Installer
-        run: light -nologo -out wix.msi build.wixobj
+        run: |
+          # Your WiX Toolset build commands here
+          candle -nologo -out build wix.wxs
+          light -nologo -out wix.msi build.wixobj
 
       - name: Publish Artifacts
         uses: actions/upload-artifact@v2
