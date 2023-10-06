@@ -25,10 +25,6 @@ jobs:
         run: |
           # Add WiX Toolset to PATH
           $env:Path += ";$($env:ProgramFiles)\WiX\bin"
-          # Refresh environment  
-          ./scripts/RefreshEnv.cmd
-          # Now candle.exe should be found
-          & "candle.exe" "wix.wxs"
 
       - name: Build MSI 
         shell: cmd
