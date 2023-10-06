@@ -29,7 +29,6 @@ jobs:
       - name: Build MSI 
         shell: pwsh
         run:
-          cd . .
           candle.exe wix.wxs
           light.exe wix.wixobj
 
