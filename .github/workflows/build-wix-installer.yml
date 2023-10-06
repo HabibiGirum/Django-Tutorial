@@ -19,10 +19,10 @@ jobs:
           Invoke-WebRequest -Uri 'https://github.com/wixtoolset/wix3/releases/download/wix3112rtm/wix311-binaries.zip' -OutFile 'wix311-binaries.zip'
 
           # Extract WiX Toolset
-          Expand-Archive -Path 'wix311-binaries.zip' -DestinationPath '$env:ProgramFiles\WiX'
+          Expand-Archive -Path 'wix311-binaries.zip' -DestinationPath $env:ProgramFiles\WiX
 
           # Add WiX Toolset to PATH
-          $env:Path += ";$env:ProgramFiles\WiX"
+          $env:Path += ";$($env:ProgramFiles)\WiX\bin"
 
       - name: Build MSI
         run: candle wix.wxs && light -ext WixUIExtension -out MyProduct.msi wix.wixobj
