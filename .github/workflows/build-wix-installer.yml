@@ -31,6 +31,6 @@ jobs:
          # Navigate to the directory where your wix.wxs file is located
          Set-Location -Path ..
          # Build the MSI using PowerShell and Start-Proces
-         & "C:\Program Files\WiX\bin\candle.exe" "wix.wxs"
+         & "$env:ProgramFiles\WiX\bin\candle.exe" "wix.wxs"
          & "C:\Program Files\WiX\bin\light.exe" "wix.wixobj"
 
