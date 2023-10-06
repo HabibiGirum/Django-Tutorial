@@ -26,9 +26,14 @@ jobs:
           # Add WiX Toolset to PATH
           $env:Path += ";$($env:ProgramFiles)\WiX\bin"
 
-      - name: Build MSI 
-        shell: pwsh
+      - name: Build MSI
         run: |
-          # Build the MSI using candle.exe and light.exe
-          & "${env:ProgramFiles}\WiX\bin\candle.exe" wix.wxs
-          & "${env:ProgramFiles}\WiX\bin\light.exe" wix.wixobj
+          # Navigate to the directory where your wix.wxs file is located
+          Set-Location -Path ..
+      
+          # Build the MSI using the full path to candle.exe
+          & "${env:ProgramFiles}\WiX\bin\candle.exe" "wix.wxs"
+
+      - name: List Files in WiX Directory
+        run: Get-ChildItem "${env:ProgramFiles}\WiX\bin"
+
