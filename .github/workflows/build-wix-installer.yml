@@ -24,9 +24,13 @@ jobs:
       - name: Set up WiX environment
         run: |
           # Add WiX Toolset to PATH
-          $env:Path += ";$($env:ProgramFiles)\WiX"
+          $env:Path += ";$($env:ProgramFiles)\WiX\bin"
 
       - name: Build MSI
         run: |
+          # Navigate to the directory where your wix.wxs file is located
+          cd path/to/your/wix/wxs/file/directory
+
+          # Build the MSI using candle.exe and light.exe
           & candle.exe wix.wxs
           & light.exe -ext WixUIExtension -out MyProduct.msi wix.wixobj
