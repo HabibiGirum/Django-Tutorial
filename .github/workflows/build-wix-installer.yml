@@ -3,29 +3,28 @@ name: Build WiX Installer
 on:
   push:
     branches:
-      - main  
+      - main
 
 jobs:
   build:
-    runs-on: windows-latest  
+    runs-on: windows-latest
+
+    container:
+      image: microsoft/wix:latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Install WiX Toolset
-      run: |
-        choco install wixtoolset --force -y
-        refreshenv
+      # Your build steps using the WiX Toolset within the container
+      - name: Build WiX Installer
+        run: candle -nologo -out build wix.wxs
 
-    - name: Build WiX Installer
-      run: candle -nologo -out build wix.wxs
+      - name: Create Installer
+        run: light -nologo -out wix.msi build.wixobj
 
-    - name: Create Installer
-      run: light -nologo -out wix.msi build.wixobj
-
-    - name: Publish Artifacts
-      uses: actions/upload-artifact@v2
-      with:
-        name: installer
-        path: wix.msi
+      - name: Publish Artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: installer
+          path: wix.msi
