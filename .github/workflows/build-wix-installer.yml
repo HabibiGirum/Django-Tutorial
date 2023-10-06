@@ -15,7 +15,7 @@ jobs:
 
     - name: Install WiX Toolset
       run: |
-        choco install wixtoolset -y
+        choco install wixtoolset --force -y
         refreshenv
 
     - name: Build WiX Installer
