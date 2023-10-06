@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: self-hosted  # Specify the label of your self-hosted runner here
+    runs-on: self-hosted  
 
     steps:
       - name: Checkout code
@@ -15,7 +15,7 @@ jobs:
 
       - name: Build WiX Installer
         run: |
-          # Your WiX Toolset build commands here
+    
           candle -nologo -out build wix.wxs
           light -nologo -out wix.msi build.wixobj
 
