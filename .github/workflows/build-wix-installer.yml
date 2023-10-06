@@ -28,7 +28,7 @@ jobs:
 
       - name: Build MSI 
         shell: pwsh
-        run:
-          candle.exe wix.wxs
-          light.exe wix.wixobj
-
+        run: |
+          # Build the MSI using candle.exe and light.exe
+          & "$env:ProgramFiles\WiX\bin\candle.exe" wix.wxs
+          & "$env:ProgramFiles\WiX\bin\light.exe" wix.wixobj
