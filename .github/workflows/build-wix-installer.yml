@@ -25,12 +25,12 @@ jobs:
         run: |
           # Add WiX Toolset to PATH
           $env:Path += ";$($env:ProgramFiles)\WiX\bin"
+          # Refresh environment  
+          ./scripts/RefreshEnv.cmd
+          # Now candle.exe should be found
+          & "candle.exe" "wix.wxs"
 
-      - name: Build MSI
-        run: |
-         # Navigate to the directory where your wix.wxs file is located
-         Set-Location -Path ..
-         # Build the MSI using PowerShell and Start-Proces
-         & "$env:ProgramFiles\WiX\bin\candle.exe" "wix.wxs"
-         & "C:\Program Files\WiX\bin\light.exe" "wix.wixobj"
+      - name: Build MSI 
+        shell: cmd
+        run: candle.exe wix.wxs
 
