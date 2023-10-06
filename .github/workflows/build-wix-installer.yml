@@ -13,8 +13,10 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Set up WiX Toolset
-      uses: wixtoolset/setup-wix@v2
+    - name: Install WiX Toolset
+      run: |
+        choco install wixtoolset -y
+        refreshenv
 
     - name: Build WiX Installer
       run: candle -nologo -out build wix.wxs
