@@ -28,11 +28,18 @@ jobs:
           echo $env:Path
 
       - name: Build MSI
-        env:
-          PATH: ${{ runner.tool_cache }}/wix311/bin;${{ env.PATH }}
         run: |
-          $wixPath = "${{ runner.tool_cache }}/wix311/bin"
-          $env:Path = "$wixPath;$env:Path"
+          # Specify the full path to candle.exe
+          $candlePath = "${{ runner.tool_cache }}/wix311/bin/candle.exe"
+          $wixSourceFile = "wix.wxs"
+          $outputWixobjFile = "wix.wixobj"
 
-          candle wix.wxs -o wix.wixobj
-          light wix.wixobj -o wix.msi
+          # Run candle.exe
+          & $candlePath $wixSourceFile -o $outputWixobjFile
+
+          # Specify the full path to light.exe
+          $lightPath = "${{ runner.tool_cache }}/wix311/bin/light.exe"
+          $outputMsiFile = "wix.msi"
+
+          # Run light.exe
+          & $lightPath $outputWixobjFile -o $outputMsiFile
