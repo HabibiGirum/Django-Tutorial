@@ -28,12 +28,12 @@ jobs:
           echo $env:Path
 
       - name: Build MSI
-        shell: pwsh
+        env:
+          PATH: ${{ runner.tool_cache }}\wix311\bin;${{ env.PATH }}
+
         run: |
-          # Build the MSI using candle and light with explicit PATH
-          env:
-            Path: $env:Path + ";C:\Program Files\WiX\bin"
-          candle path/to/your.wxs -o path/to/output.wixobj
-          light path/to/output.wixobj -o path/to/output.msi
+          candle wix.wxs -o wix.wixobj
+          light wix.wixobj -o wix.msi
+          shell:pwsh
 
 
