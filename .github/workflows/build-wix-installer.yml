@@ -33,6 +33,7 @@ jobs:
           PATH: ${{ runner.tool_cache }}\wix311\bin;${{ env.PATH }}
 
         run: |
+          shell:pwsh.EXE
           $wixPath = "C:\hostedtoolcache\windows\wix311\bin"
           $env:Path = "$wixPath;$env:Path"
 
