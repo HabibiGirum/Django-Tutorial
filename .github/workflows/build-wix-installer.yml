@@ -24,8 +24,8 @@ jobs:
     # - name: Restore dependencies
     #   run: nuget restore
 
-    - name: Build application
-      run: msbuild /p:Configuration=Release
+    # - name: Build application
+    #   run: msbuild /p:Configuration=Release
 
     - name: Build WiX Project
       run: candle wix.wxs && light wix.wixobj
