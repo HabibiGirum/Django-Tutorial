@@ -24,4 +24,4 @@ jobs:
     - name: Build WiX Project
       run: 
         candle wix.wxs
-        light -out "output" wix.wixobj
+        light wix.wixobj -out "output"
