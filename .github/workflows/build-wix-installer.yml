@@ -15,9 +15,9 @@ jobs:
 
       - name: Build MSI
         run: |
-          # Specify the full path to candle.exe and light.exe
-          $candlePath = "C:\Program Files (x86)\WiX Toolset v3.14\bin\candle.exe"
-          $lightPath = "C:\Program Files (x86)\WiX Toolset v3.14\bin\light.exe"
+          # Specify the full path to candle.exe and light.exe with URL-encoded spaces
+          $candlePath = "file:///C:/Program%20Files%20(x86)/WiX%20Toolset%20v3.14/bin/candle.exe"
+          $lightPath = "file:///C:/Program%20Files%20(x86)/WiX%20Toolset%20v3.14/bin/light.exe"
           $wixSourceFile = "wix.wxs"
           $outputWixobjFile = "wix.wixobj"
           $outputMsiFile = "wix.msi"
