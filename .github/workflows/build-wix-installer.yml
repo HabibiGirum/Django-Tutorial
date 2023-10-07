@@ -21,11 +21,8 @@ jobs:
         echo "C:\\Program Files (x86)\\WiX Toolset v3.11\\bin" >> $GITHUB_PATH
       shell: bash
 
-    # - name: Restore dependencies
-    #   run: nuget restore
+    - name: Compile WiX Project
+      run: candle wix.wxs -o output  # Compile WiX source and specify output directory
 
-    # - name: Build application
-    #   run: msbuild /p:Configuration=Release
-
-    - name: Build WiX Project
-      run: candle wix.wxs && light wix.wixobj
+    - name: Link WiX Object Files
+      run: light output\*.wixobj -o myapp.msi  # Link WiX object files and generate MSI file
