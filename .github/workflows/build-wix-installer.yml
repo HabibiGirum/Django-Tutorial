@@ -16,16 +16,16 @@ jobs:
       - name: Build MSI
         run: |
           # Specify the full path to candle.exe with quotes
-          $candlePath = '"C:\Program Files (x86)\WiX Toolset v3.14\bin\candle.exe"'
+          $candlePath = "C:\Program Files (x86)\WiX Toolset v3.14\bin\candle.exe"
           $wixSourceFile = "wix.wxs"
           $outputWixobjFile = "wix.wixobj"
 
           # Run candle.exe
-          Invoke-Expression "$candlePath $wixSourceFile -o $outputWixobjFile"
+          & $candlePath $wixSourceFile -o $outputWixobjFile
 
           # Specify the full path to light.exe with quotes
-          $lightPath = '"C:\Program Files (x86)\WiX Toolset v3.14\bin\light.exe"'
+          $lightPath = "C:\Program Files (x86)\WiX Toolset v3.14\bin\light.exe"
           $outputMsiFile = "wix.msi"
 
           # Run light.exe
-          Invoke-Expression "$lightPath $outputWixobjFile -o $outputMsiFile"
+          & $lightPath $outputWixobjFile -o $outputMsiFile
