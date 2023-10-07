@@ -33,12 +33,11 @@ jobs:
           PATH: ${{ runner.tool_cache }}\wix311\bin;${{ env.PATH }}
 
         run: |
-          shell:pwsh.EXE
+          shell: C:\Program Files\PowerShell\7
           $wixPath = "C:\hostedtoolcache\windows\wix311\bin"
           $env:Path = "$wixPath;$env:Path"
 
           candle wix.wxs -o wix.wixobj
           light wix.wixobj -o wix.msi
-          shell:pwsh
 
 
