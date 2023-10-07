@@ -28,9 +28,9 @@ jobs:
         light -out file.msi wix.wixobj
 
 
-    - name: Upload artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: my-msi-file
-        path: file.msi
+    # - name: Upload artifact
+    #   uses: actions/upload-artifact@v2
+    #   with:
+    #     name: my-msi-file
+    #     path: file.msi
 
