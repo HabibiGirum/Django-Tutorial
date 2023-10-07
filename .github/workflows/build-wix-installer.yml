@@ -21,8 +21,8 @@ jobs:
         echo "C:\\Program Files (x86)\\WiX Toolset v3.11\\bin" >> $GITHUB_PATH
       shell: bash
 
-    - name: Restore dependencies
-      run: nuget restore
+    # - name: Restore dependencies
+    #   run: nuget restore
 
     - name: Build application
       run: msbuild /p:Configuration=Release
