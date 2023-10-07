@@ -28,16 +28,11 @@ jobs:
           echo $env:Path
 
       - name: Build MSI
-      
         env:
-          PATH: ${{ runner.tool_cache }}\wix311\bin;${{ env.PATH }}
-
+          PATH: ${{ runner.tool_cache }}/wix311/bin;${{ env.PATH }}
         run: |
-          shell: C:\Program Files\PowerShell\7
-          $wixPath = "C:\hostedtoolcache\windows\wix311\bin"
+          $wixPath = "${{ runner.tool_cache }}/wix311/bin"
           $env:Path = "$wixPath;$env:Path"
 
           candle wix.wxs -o wix.wixobj
           light wix.wixobj -o wix.msi
-
-
