@@ -22,4 +22,6 @@ jobs:
       shell: bash
       
     - name: Build WiX Project
-      run: candle wix.wxs && light -out "output" wix.wixobj
+      run: 
+        candle wix.wxs
+        light -out "output" wix.wixobj
