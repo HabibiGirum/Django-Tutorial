@@ -29,6 +29,12 @@ jobs:
 
       - name: Build MSI
         run: |
+          # Add WiX Toolset to PATH
+          $env:Path += ";C:\Program Files\WiX\bin"
+          echo $env:Path
+          
           # Build the MSI using candle and light
-          candle wix.wxs -o wix.wixobj
-          light wix.wixobj -o output.msi
+          candle path/to/your.wxs -o path/to/output.wixobj
+          light path/to/output.wixobj -o path/to/output.msi
+          shell: C:\Program Files\PowerShell\7\pwsh.EXE
+
