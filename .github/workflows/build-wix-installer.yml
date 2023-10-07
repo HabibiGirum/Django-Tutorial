@@ -30,7 +30,7 @@ jobs:
       - name: Build MSI
         run: |
           # Specify the full path to candle.exe
-          $candlePath = "${{ runner.tool_cache }}\wix311\bin\candle.exe"
+          $candlePath = "C:\Program Files (x86)\WiX Toolset v3.14\bin\candle.exe"
           $wixSourceFile = "wix.wxs"
           $outputWixobjFile = "wix.wixobj"
 
@@ -38,7 +38,7 @@ jobs:
           & $candlePath $wixSourceFile -o $outputWixobjFile
 
           # Specify the full path to light.exe
-          $lightPath = "${{ runner.tool_cache }}\wix311\bin\light.exe"
+          $lightPath = "C:\Program Files (x86)\WiX Toolset v3.14\bin\light.exe"
           $outputMsiFile = "wix.msi"
 
           # Run light.exe
