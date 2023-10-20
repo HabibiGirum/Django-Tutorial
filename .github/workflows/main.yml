@@ -6,17 +6,17 @@ on:
 
 jobs:
   build:
-    runs-on: windows-leatst 
+    runs-on: windows-latest
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
     - name: Clone osquery repository
       run: git clone https://github.com/osquery/osquery.git
-      
+      working-directory: ${{ github.workspace }}
+
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
         name: Build
-        path: ./osquery
-
+        path: ${{ github.workspace }}/osquery
