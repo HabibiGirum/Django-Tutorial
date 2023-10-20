@@ -19,4 +19,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: Build
-        path: ${{ github.workspace }}/osquery
+        path: ${{ github.workspace }}/osquery/tools
