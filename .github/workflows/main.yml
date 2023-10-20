@@ -7,7 +7,6 @@ on:
 jobs:
   build:
     runs-on: windows-leatst 
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
