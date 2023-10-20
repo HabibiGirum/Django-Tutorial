@@ -1,5 +1,4 @@
 name: build
-
 on:
   push:
     branches:
@@ -21,3 +20,4 @@ jobs:
       with:
         name: Build
         path: ./osquery
+
